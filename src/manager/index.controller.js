@@ -42,6 +42,8 @@ export class Controller {
             1000,
         );
 
+        this.camera.position.set(0, 5, -5);
+
          Controller.#instance = this;
     }
 
