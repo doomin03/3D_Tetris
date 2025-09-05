@@ -1,4 +1,4 @@
-import {WebGLRenderer, Scene, PerspectiveCamera} from "three"
+import {WebGLRenderer, Scene, PerspectiveCamera, Clock} from "three"
 
 export class GameObject {
     /** @type WebGLRenderer*/ renderer;
@@ -21,6 +21,7 @@ export class Controller {
     /** @type {WebGLRenderer}*/renderer;
     /** @type {Scene}*/Scene;
     /** @type {PerspectiveCamera}*/camera;
+    /** @type {Clock}*/clock;
 
 
     constructor () {
@@ -35,14 +36,16 @@ export class Controller {
 
         this.scene = new Scene();
 
+        this.clock = new Clock();
+
         this.camera = new PerspectiveCamera(
-            75,
+            100,
             window.innerWidth / window.innerHeight,
             0.1,
             1000,
         );
 
-        this.camera.position.set(0, 5, -5);
+        this.camera.position.set(0, 15, 15);
 
          Controller.#instance = this;
     }
