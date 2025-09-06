@@ -2,6 +2,7 @@ import {GameObject, Controller} from './manager/index.controller';
 import {WebGLRenderer, AmbientLight, GridHelper, Camera} from 'three';
 
 import GameBoard from './screen/GameBoard.screen.js';
+import MoveBlock from "./screen/MoveBlock.js";
 
 const controller = new Controller();
 
@@ -20,8 +21,10 @@ grid.position.y = 0;
 scene.add(grid);
 
 const gameBoard = new GameBoard();
+const moveBlock = new MoveBlock();
 
 
 controller.addObject(gameBoard);
+controller.addObject(moveBlock);
 controller.start();
 controller.update();

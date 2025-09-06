@@ -3,7 +3,12 @@ import {WebGLRenderer, Scene, PerspectiveCamera, Clock} from "three"
 export class GameObject {
     /** @type WebGLRenderer*/ renderer;
     /** @type Scene */ scene;
-    constructor (){}
+    /** @type Clock*/ clock;
+    /** @type Controller */ controls;
+
+    constructor (){
+        this.controls = new Controller();
+    }
 
     start (){
 
@@ -54,8 +59,15 @@ export class Controller {
         if (object instanceof GameObject){
             object.renderer = this.renderer;
             object.scene = this.scene;
+            object.clock = this.clock;
             this.#object.push(object);
         }
+    }
+
+    /** @param {String} className*/
+    /** @return {GameObject}*/
+    getComponent(className){
+        return this.#object.find((e => e.constructor.name === className));
     }
 
     start(){
