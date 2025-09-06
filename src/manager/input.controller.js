@@ -1,7 +1,7 @@
 
 class InputController {
     static #instance = null;
-    eventObject;
+    eventObject = {};
 
     constructor(){
         if(InputController.#instance) {
@@ -10,6 +10,20 @@ class InputController {
 
 
         InputController.#instance = this;
-        this.eventObject = {};
+
     }
+
+    addEvent (eventName, eventFunc){
+        if(this.eventObject.keys().include(eventName)){
+            this.eventObject[eventName] = [eventFunc];
+        }
+        else {
+            this.eventObject[eventName].push(eventFunc);
+        }
+    }
+
+    setEventListener (){
+        window.addEventListener();
+    }
+
 }
